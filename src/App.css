@@ -1,0 +1,19 @@
+.ant-menu > .ant-menu-item.ant-menu-item-selected {
+   background-color: rgba(19, 26, 39, 0.2);
+   color: #1f8efa;
+   mix-blend-mode: normal;
+   border-left: none;
+   padding-left: 25px;
+}
+
+.ant-menu > .ant-menu-item {
+   border-left: 7px solid rgba(152, 167, 185, 0.25);
+}
+
+.ant-menu-vertical > .ant-menu-item:not(:last-child) {
+   margin: 0;
+}
+
+.ant-menu-vertical > .ant-menu-item {
+   margin: 0;
+}
