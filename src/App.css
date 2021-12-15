@@ -1,3 +1,5 @@
+/* Dashboard left navbar styles */
+
 .ant-menu > .ant-menu-item.ant-menu-item-selected {
    background-color: rgba(19, 26, 39, 0.2);
    color: #1f8efa;
@@ -16,4 +18,18 @@
 
 .ant-menu-vertical > .ant-menu-item {
    margin: 0;
+}
+
+/* Datepicker styles */
+
+.ant-picker-input > input {
+   color: #98a7b9;
+}
+
+.ant-picker-clear {
+   background: none;
+}
+
+.ant-picker-suffix {
+   background: #2f3b52;
 }
