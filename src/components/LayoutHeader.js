@@ -38,6 +38,9 @@ const useStyles = createUseStyles({
 
       color: '#CFD7DB',
       padding: '0 15px'
+   },
+   dropdown_icon: {
+      padding: '2px 5px 0 5px'
    }
 })
 
@@ -84,7 +87,8 @@ export default function LayoutHeader() {
             </Tooltip>
             <Tooltip placement="bottom" title='Уведомления'>
                {
-                  haveNotification ? <img src={notificationNoCheck} className={classes.button_icon} alt="notifications" onClick={changeNotificationStatus} />
+                  haveNotification
+                     ? <img src={notificationNoCheck} className={classes.button_icon} alt="notifications" onClick={changeNotificationStatus} />
                      : <BellFilled className={classes.button_icon} onClick={changeNotificationStatus} />
                }
             </Tooltip>
@@ -93,7 +97,7 @@ export default function LayoutHeader() {
          <Dropdown overlay={menu}>
             <div className={classes.username}>
                <span>Username</span>
-               <CaretDownOutlined style={{ padding: '2px 5px 0 5px' }} />
+               <CaretDownOutlined className={classes.dropdown_icon} />
             </div>
          </Dropdown>
       </Layout.Header>

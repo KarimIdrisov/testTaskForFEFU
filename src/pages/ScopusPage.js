@@ -15,15 +15,15 @@ import DashboardsLayout from '../components/DashboardsLayout';
 const useStyles = createUseStyles({
    pageHeader: {
       display: 'flex',
+      marginBottom: '7px',
 
-      marginBottom: '7px'
+      fontFamily: 'Roboto',
    },
    headerTitle: {
       flex: '1 1',
 
       color: '#FFFFFF',
       fontSize: '30px',
-      fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: '300',
       lineHeight: '35px'

@@ -4,7 +4,7 @@ import { Pie } from "@ant-design/charts";
 export default function PieChart(props) {
    return (
       <div>
-         <Pie {...props.config} />;
+         <Pie {...props.config} />
       </div>
    )
 }

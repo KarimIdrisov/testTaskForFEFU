@@ -369,11 +369,15 @@ export default function PriorityPage() {
 
                <Row className={classes.stats}>
                   <Col span={10}>
-                     <StatsForOnePerson title={'Количество публикаций WoS и Scopus на 1 НПР'} name='publications' data={statsForOnePersonDataPublications} />
+                     <StatsForOnePerson
+                        title={'Количество публикаций WoS и Scopus на 1 НПР'}
+                        name='publications' data={statsForOnePersonDataPublications} />
                   </Col>
                   <Col span={4}></Col>
                   <Col span={10}>
-                     <StatsForOnePerson title={'Количество цитирований WoS и Scopus на 1 НПР'} name='citations' data={statsForOnePersonDataCitation} />
+                     <StatsForOnePerson
+                        title={'Количество цитирований WoS и Scopus на 1 НПР'}
+                        name='citations' data={statsForOnePersonDataCitation} />
                   </Col>
                </Row>
 
