@@ -1,12 +1,11 @@
 import React from 'react'
-import { Menu, Button, Layout, Space, Dropdown, Tooltip } from 'antd';
+import { Menu, Layout, Space, Dropdown, Tooltip } from 'antd';
 import { QuestionCircleFilled, MailFilled, BellFilled, CaretDownOutlined } from '@ant-design/icons';
 import notificationNoCheck from '../assets/notificationNoRead.svg'
 
 import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
-
    header: {
       padding: '10.5px',
       display: 'flex',
@@ -14,7 +13,6 @@ const useStyles = createUseStyles({
       alignItems: 'center',
 
       background: '#242E42',
-
       borderBottom: '1px solid #20293C'
    },
    userSubMenu: {
@@ -46,7 +44,6 @@ const useStyles = createUseStyles({
 export default function LayoutHeader() {
 
    const classes = useStyles()
-
    let haveNotification = true
 
    const changeNotificationStatus = () => {
@@ -87,7 +84,7 @@ export default function LayoutHeader() {
             </Tooltip>
             <Tooltip placement="bottom" title='Уведомления'>
                {
-                  haveNotification ? <img src={notificationNoCheck} className={classes.button_icon} onClick={changeNotificationStatus} />
+                  haveNotification ? <img src={notificationNoCheck} className={classes.button_icon} alt="notifications" onClick={changeNotificationStatus} />
                      : <BellFilled className={classes.button_icon} onClick={changeNotificationStatus} />
                }
             </Tooltip>

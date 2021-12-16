@@ -1,10 +1,12 @@
 import React from 'react'
 import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom'
+import { changeActivePage } from '../store/actions';
+
 import athenaLogo from '../assets/athena_logo.svg'
 import prioriteLogo from '../assets/priorite.svg'
 import scopusLogo from '../assets/scopus.svg'
 import wosLogo from '../assets/wos.svg'
-
 import reviewLogo from '../assets/review.svg'
 import authorLogo from '../assets/author.svg'
 import publicationsLogo from '../assets/publications.svg'
@@ -17,6 +19,7 @@ import collectivesLogo from '../assets/collectives.svg'
 import subcollectivesLogo from '../assets/subcollectives.svg'
 
 import { createUseStyles } from 'react-jss'
+import { connect } from 'react-redux';
 
 const useStyles = createUseStyles({
    logo: {
@@ -62,27 +65,10 @@ const useStyles = createUseStyles({
    }
 })
 
-export default function LeftNavbar() {
+function LeftNavbar(props) {
    const classes = useStyles()
 
-   const dashboardSelectedKeys = ['0']
-   const pagesSelectedKeys = ['0']
-
-   const dashboards = [
-      {
-         icon: scopusLogo,
-         title: 'SCOPUS',
-      },
-      {
-         icon: wosLogo,
-         title: 'WEB OF SCIENCE',
-      },
-      {
-         icon: prioriteLogo,
-         title: 'ПРИОРИТЕТ-2030',
-      }]
-
-   const pages = [
+   const scopusPages = [
       {
          icon: reviewLogo,
          title: 'Обзор'
@@ -125,6 +111,43 @@ export default function LeftNavbar() {
       }
    ]
 
+   const dashboards = [
+      {
+         icon: scopusLogo,
+         title: 'SCOPUS',
+         link: '/scopus',
+         page: 'scopus',
+         pages: scopusPages
+      },
+      {
+         icon: wosLogo,
+         title: 'WEB OF SCIENCE',
+         link: '/wos',
+         page: 'wos',
+         pages: []
+      },
+      {
+         icon: prioriteLogo,
+         title: 'ПРИОРИТЕТ-2030',
+         link: '/priority',
+         page: 'priority',
+         pages: []
+      }]
+
+   // set active page
+   const pagesSelectedKeys = ['0']
+   const { page, pages, changeActivePage } = props
+   const dashboardSelectedKeys = []
+   dashboards.forEach((dashboardItem, index) => {
+      if (dashboardItem.page === page) {
+         dashboardSelectedKeys.push(index.toString())
+      }
+   })
+
+   const updateState = (page, pages) => {
+      changeActivePage(page, pages)
+   }
+
    return (
       <Layout.Sider trigger={null} className={classes.left_navbar}>
          <div className={classes.dashboardHeader}>
@@ -137,8 +160,8 @@ export default function LeftNavbar() {
             <h2 className={classes.menuTitle}>Dashboards</h2>
             {dashboards.map((dashboardItem, key) => {
                return (
-                  <Menu.Item key={key} icon={<img src={dashboardItem.icon} />}>
-                     {dashboardItem.title}
+                  <Menu.Item key={key} icon={<img src={dashboardItem.icon} alt="dashboard icon" />} onClick={() => updateState(dashboardItem.page, dashboardItem.pages)}>
+                     <Link to={dashboardItem.link}>{dashboardItem.title}</Link>
                   </Menu.Item>
                )
             })}
@@ -149,7 +172,7 @@ export default function LeftNavbar() {
                <h2 className={classes.menuTitle}>Pages</h2>
                {pages.map((dashboardItem, key) => {
                   return (
-                     <Menu.Item key={key} icon={<img src={dashboardItem.icon} />}>
+                     <Menu.Item key={key} icon={<img src={dashboardItem.icon} alt="page icon" />}>
                         {dashboardItem.title}
                      </Menu.Item>
                   )
@@ -159,3 +182,5 @@ export default function LeftNavbar() {
       </Layout.Sider>
    )
 }
+
+export default connect((state) => state.activePage, { changeActivePage })(LeftNavbar);

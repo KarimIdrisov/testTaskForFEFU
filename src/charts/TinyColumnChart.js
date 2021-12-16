@@ -17,14 +17,12 @@ const useStyles = createUseStyles({
 
 export default function TinyColumnChart(props) {
    const ref = React.useRef(null)
-   let tinyColumn = null
 
    const classes = useStyles()
 
    useEffect(() => {
+      let tinyColumn = null
       const data = [props.data]
-      console.log(data);
-
 
       if (!tinyColumn) {
          tinyColumn = new TinyColumn(ref.current, {
@@ -44,7 +42,7 @@ export default function TinyColumnChart(props) {
       }
 
       tinyColumn.render();
-   }, [])
+   }, [props.data])
 
    return (
       <div>

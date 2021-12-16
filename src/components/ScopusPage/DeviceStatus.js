@@ -1,6 +1,5 @@
 import React from 'react'
 import DeviceStatusItem from './DeviceStatusItem'
-import { Space } from 'antd'
 import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
@@ -15,7 +14,6 @@ const useStyles = createUseStyles({
       borderRadius: '5px'
    }
 })
-
 
 export default function DeviceStatus() {
 
@@ -52,9 +50,9 @@ export default function DeviceStatus() {
    return (
       <div className={classes.devices_wrapper}>
          {
-            dataDevices.map((device) => {
+            dataDevices.map((device, key) => {
                return (
-                  <DeviceStatusItem device={device} />
+                  <DeviceStatusItem key={key} device={device} />
                )
             })
          }

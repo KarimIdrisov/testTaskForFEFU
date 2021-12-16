@@ -1,13 +1,14 @@
-import DashboardsLayout from './components/DashboardsLayout'
 import 'antd/dist/antd.css'
-import ScopusPage from './pages/ScopusPage';
+import { Provider } from "react-redux"
 import './App.css'
+import store from "./store";
+import Router from "./router";
 
 function App() {
   return (
-    <DashboardsLayout>
-      <ScopusPage />
-    </DashboardsLayout>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 }
 

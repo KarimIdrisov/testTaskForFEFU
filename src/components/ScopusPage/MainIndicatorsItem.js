@@ -1,7 +1,7 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import upIcon from '../assets/up.svg'
-import downIcon from '../assets/down.svg'
+import upIcon from '../../assets/up.svg'
+import downIcon from '../../assets/down.svg'
 import { Row, Col } from 'antd'
 
 export default function MainIndicatorsItem(props) {
@@ -64,7 +64,11 @@ export default function MainIndicatorsItem(props) {
             </Col>
             <Col className={classes.ind_move}>
                <Row className={classes.move_value}>{props.indicator.diff}</Row>
-               <Row className={classes.move_dir}>{props.indicator.isUp ? <img src={upIcon} width='14px' height='14px' /> : <img src={downIcon} width='14px' height='14px' />}</Row>
+               <Row className={classes.move_dir}>
+                  {props.indicator.isUp
+                     ? <img src={upIcon} alt="up icon" width='14px' height='14px' />
+                     : <img src={downIcon} width='14px' height='14px' alt="down icon" />}
+               </Row>
             </Col>
          </Row>
       </div>

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Row, Col } from 'antd'
-import { TinyLine } from '@antv/g2plot'
 
 import { createUseStyles } from 'react-jss'
+import TinyLineChart from '../../charts/TinyLineChart'
 
 const useStyles = createUseStyles({
    status_wrapper: {
@@ -11,7 +11,6 @@ const useStyles = createUseStyles({
 
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-
    },
    status_title: {
       fontSize: '24px',
@@ -30,26 +29,15 @@ const useStyles = createUseStyles({
 export default function DeviceStatusItem(props) {
 
    const classes = useStyles()
-   const ref = React.useRef(null)
-   let trendChart = null
+   const data = props.device.data
 
-   useEffect(() => {
-
-      const data = props.device.data
-
-      if (!trendChart) {
-
-         trendChart = new TinyLine(ref.current, {
-            height: 60,
-            autoFit: false,
-            data,
-            smooth: true,
-            color: props.device.color,
-         });
-      }
-
-      trendChart.render()
-   }, [])
+   const config = {
+      height: 60,
+      autoFit: false,
+      data,
+      smooth: true,
+      color: props.device.color,
+   }
 
    return (
       <div className={classes.status_wrapper}>
@@ -59,7 +47,9 @@ export default function DeviceStatusItem(props) {
                <span className={classes.status_interval} >{props.device.interval}</span>
             </Col>
             <Col span={16}>
-               <div ref={ref} />
+               <div>
+                  <TinyLineChart config={config} />
+               </div>
             </Col>
          </Row>
       </div>

@@ -1,15 +1,16 @@
-import { Button, Col, DatePicker, Row } from 'antd'
+import { Col, DatePicker, Row } from 'antd'
 import React from 'react'
-import SocialGraph from '../charts/SocialGraph'
+import SocialGraph from '../components/ScopusPage/SocialGraph'
 import { SettingFilled } from '@ant-design/icons';
 import { Tooltip } from 'antd'
 
 import { createUseStyles } from 'react-jss'
-import DistributionOfKnowledges from '../components/DistributionOfKnowledges'
-import TopSchools from '../components/TopSchools'
-import MainIdicators from '../components/MainIdicators'
-import DeviceStatus from '../components/DeviceStatus'
-import Publications from '../components/Publications';
+import DistributionOfKnowledges from '../components/ScopusPage/DistributionOfKnowledges'
+import TopSchools from '../components/ScopusPage/TopSchools'
+import MainIdicators from '../components/ScopusPage/MainIdicators'
+import DeviceStatus from '../components/ScopusPage/DeviceStatus'
+import Publications from '../components/ScopusPage/Publications';
+import DashboardsLayout from '../components/DashboardsLayout';
 
 const useStyles = createUseStyles({
    pageHeader: {
@@ -53,41 +54,42 @@ export default function ScopusPage() {
 
    return (
       <div>
+         <DashboardsLayout>
+            <div className={classes.pageHeader}>
+               <h2 className={classes.headerTitle}>Обзор</h2>
 
-         <div className={classes.pageHeader}>
-            <h2 className={classes.headerTitle}>Обзор</h2>
+               <DatePicker className={classes.headerDatePicker} placeholder="Выберите дату" />
+               <Tooltip placement="bottom" title='Настройки'>
+                  <SettingFilled className={classes.button_icon} />
+               </Tooltip>
+            </div>
 
-            <DatePicker className={classes.headerDatePicker} placeholder="Выберите дату" />
-            <Tooltip placement="bottom" title='Настройки'>
-               <SettingFilled className={classes.button_icon} />
-            </Tooltip>
-         </div>
+            <div>
+               <Row gutter={16}>
+                  <Col span={16}>
+                     <SocialGraph />
+                  </Col>
+                  <Col span={8}>
+                     <Row style={{ marginBottom: '10px' }}>
+                        <DistributionOfKnowledges />
+                     </Row>
+                     <Row gutter={16}>
+                        <Col span={12}>
+                           <TopSchools />
+                        </Col>
+                        <Col span={12}>
+                           <Publications />
+                        </Col>
+                     </Row>
+                  </Col>
+               </Row>
+               <Row style={{ margin: '8px 0' }}>
+                  <MainIdicators />
+               </Row>
+            </div>
 
-         <div>
-            <Row gutter={16}>
-               <Col span={16}>
-                  <SocialGraph />
-               </Col>
-               <Col span={8}>
-                  <Row style={{ marginBottom: '10px' }}>
-                     <DistributionOfKnowledges />
-                  </Row>
-                  <Row gutter={16}>
-                     <Col span={12}>
-                        <TopSchools />
-                     </Col>
-                     <Col span={12}>
-                        <Publications />
-                     </Col>
-                  </Row>
-               </Col>
-            </Row>
-            <Row style={{ margin: '8px 0' }}>
-               <MainIdicators />
-            </Row>
-         </div>
-
-         <DeviceStatus />
+            <DeviceStatus />
+         </DashboardsLayout>
       </div>
    )
 }

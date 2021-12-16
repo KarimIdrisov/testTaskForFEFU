@@ -4,16 +4,7 @@ import LayoutHeader from './LayoutHeader'
 import LeftNavbar from './LeftNavbar'
 import { Content } from 'antd/lib/layout/layout'
 
-import { createUseStyles } from 'react-jss'
-
-const useStyles = createUseStyles({
-
-})
-
 export default function DashboardsLayout(props) {
-
-   const styles = useStyles()
-
    return (
       <Layout>
          <LeftNavbar />

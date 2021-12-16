@@ -2,14 +2,25 @@
 
 .ant-menu > .ant-menu-item.ant-menu-item-selected {
    background-color: rgba(19, 26, 39, 0.2);
-   color: #1f8efa;
    mix-blend-mode: normal;
    border-left: none;
    padding-left: 25px;
 }
 
+.ant-menu > .ant-menu-item.ant-menu-item-selected a {
+   color: #1f8efa;
+}
+
+.ant-menu-item-selected > .ant-menu-item-icon {
+   filter: invert(44%) sepia(79%) saturate(2082%) hue-rotate(163deg) brightness(97%) contrast(101%);
+}
+
 .ant-menu > .ant-menu-item {
    border-left: 7px solid rgba(152, 167, 185, 0.25);
+}
+
+.ant-menu-item .ant-menu-title-content a {
+   color: #869aac;
 }
 
 .ant-menu-vertical > .ant-menu-item:not(:last-child) {
@@ -22,6 +33,13 @@
 
 /* Datepicker styles */
 
+.ant-picker {
+   background: #20293c;
+   border: none;
+   width: 100%;
+   border-radius: 5px;
+}
+
 .ant-picker-input > input {
    color: #98a7b9;
 }
@@ -32,4 +50,68 @@
 
 .ant-picker-suffix {
    background: #2f3b52;
+}
+
+/* Selector styles */
+
+.ant-select.ant-select-single > .ant-select-selector,
+.ant-select.ant-select-multiple > .ant-select-selector {
+   width: 100%;
+
+   background: #20293c;
+   border-radius: 5px;
+   border: none;
+
+   font-size: 12px;
+   font-family: "Roboto";
+   color: #98a7b9;
+}
+
+.ant-select.ant-select-single > .ant-select-arrow {
+   color: #657d95;
+}
+
+/* Table styles */
+
+.ant-spin-container > .ant-table,
+.ant-spin-container .ant-table-thead .ant-table-cell,
+.ant-spin-container .ant-table-tbody .ant-table-cell {
+   background: #2f3b52;
+   color: #ffffff;
+   border: none;
+   text-align: center;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-tbody > tr > td.ant-table-cell-row-hover {
+   background: none;
+}
+
+/* Buttons */
+
+.ant-btn.ant-btn-primary {
+   width: 100%;
+   text-transform: uppercase;
+}
+
+.btn-apply {
+   background: #3e4e6c;
+   border: none;
+}
+
+.btn-reset {
+   background: #657d95;
+   border: none;
+}
+
+/* Form */
+
+.ant-form-item-label label {
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: 300;
+   font-size: 14px;
+   line-height: 16px;
+
+   color: #ffffff;
 }

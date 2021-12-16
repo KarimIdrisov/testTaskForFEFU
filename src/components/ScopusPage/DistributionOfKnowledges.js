@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import { Pie } from '@antv/g2plot';
+import React from 'react'
 
 import { createUseStyles } from 'react-jss'
 import { MoreOutlined } from '@ant-design/icons';
+import PieChart from '../../charts/PieChart';
 
 const data = [
    { school: 'Биология и химия', percent: 25 },
@@ -44,56 +44,47 @@ const useStyles = createUseStyles({
 })
 
 export default function DistributionOfKnowledges() {
-   const ref = React.useRef(null)
-   let piePlot = null
-
    const classes = useStyles()
 
-   useEffect(() => {
-      if (!piePlot) {
-         piePlot = new Pie(ref.current, {
-            height: 140,
-            width: 360,
-            data,
-            angleField: 'percent',
-            colorField: 'school',
-            radius: 0.8,
-            innerRadius: 0.7,
-            statistic: {
-               title: false,
-               content: false,
+   const config = {
+      height: 140,
+      width: 360,
+      data,
+      angleField: 'percent',
+      colorField: 'school',
+      radius: 0.8,
+      innerRadius: 0.7,
+      statistic: {
+         title: false,
+         content: false,
+      },
+      label: false,
+      style: {
+         shadowColor: '#ffffff',
+      },
+      legend: {
+         offsetX: -80,
+         itemValue: {
+            formatter: (text, item) => {
+               const items = data.filter((d) => d.school === item.value);
+               return items[0].percent + ' %'
             },
-            label: false,
             style: {
-               shadowColor: '#ffffff',
+               fill: '#fff',
+               opacity: 0.65,
             },
-            legend: {
-               offsetX: -80,
-               itemValue: {
-                  formatter: (text, item) => {
-                     const items = data.filter((d) => d.school === item.value);
-                     return items[0].percent + ' %'
-                  },
-                  style: {
-                     fill: '#fff',
-                     opacity: 0.65,
-                  },
-               },
-               style: {
-                  fill: '#fff'
-               },
-               itemName: {
-                  style: {
-                     fill: '#fff',
-                     fontSize: 16
-                  }
-               }
+         },
+         style: {
+            fill: '#fff'
+         },
+         itemName: {
+            style: {
+               fill: '#fff',
+               fontSize: 16
             }
-         });
-
+         }
       }
-      piePlot.render()
-   }, [])
+   }
 
    return (
       <div className={classes.chart_wrapper}>
@@ -103,7 +94,9 @@ export default function DistributionOfKnowledges() {
             <MoreOutlined className={classes.button_icon} />
          </div>
 
-         <div ref={ref} />
+         <div>
+            <PieChart config={config} />
+         </div>
       </div>
    )
 }

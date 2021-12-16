@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Divider, Space } from 'antd'
+import { Space } from 'antd'
 
 import { MoreOutlined } from '@ant-design/icons';
 
@@ -15,7 +15,6 @@ const useStyles = createUseStyles({
       padding: '5px',
 
       background: '#2F3B52',
-
       borderRadius: '5px'
    },
    chart_header: {

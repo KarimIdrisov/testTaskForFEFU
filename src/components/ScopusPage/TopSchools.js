@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { createUseStyles } from 'react-jss'
 import { MoreOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
-import TinyColumnChart from '../charts/TinyColumnChart';
+import TinyColumnChart from '../../charts/TinyColumnChart';
 
 const data = [
    {
